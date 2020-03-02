@@ -24,12 +24,15 @@ public class GameActivity extends AppCompatActivity {
     private int Points = 0;
     Random random = new Random();
     char curr_BTN = 'R';
+    Intent intent;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        intent = new Intent(GameActivity.this, MainActivity.class);
         btnLeft = findViewById(R.id.btnLeft);
         btnRight = findViewById(R.id.btnRight);
         txtLife = findViewById(R.id.txtLife);
@@ -82,7 +85,7 @@ public class GameActivity extends AppCompatActivity {
                     if(Life == 0)
                     {
                         Toast.makeText(GameActivity.this, "Your Score is " + Points, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                        intent.putExtra("HighScore", Points);
                         startActivity(intent);
                     }
                 }
@@ -128,7 +131,7 @@ public class GameActivity extends AppCompatActivity {
                     if(Life == 0)
                     {
                         Toast.makeText(GameActivity.this, "Your Score is " + Points, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                        intent.putExtra("HighScore", Points);
                         startActivity(intent);
                     }
                 }
